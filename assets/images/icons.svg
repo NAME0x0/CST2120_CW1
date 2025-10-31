@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  
+  <!-- Navigation Icon -->
+  <symbol id="icon-navigation" viewBox="0 0 64 64">
+    <path d="M32 8 L50 28 L42 28 L42 50 L22 50 L22 28 L14 28 Z" fill="currentColor"/>
+    <circle cx="32" cy="12" r="3" fill="currentColor"/>
+    <path d="M28 34 L36 34 L36 46 L28 46 Z" fill="rgba(0, 240, 255, 0.3)"/>
+  </symbol>
+  
+  <!-- Obstacles Icon -->
+  <symbol id="icon-obstacles" viewBox="0 0 64 64">
+    <polygon points="32,8 52,56 12,56" fill="none" stroke="currentColor" stroke-width="2"/>
+    <polygon points="32,14 48,52 16,52" fill="rgba(255, 0, 110, 0.2)"/>
+    <path d="M22 36 L32 20 L42 36" stroke="currentColor" stroke-width="2" fill="none"/>
+    <circle cx="32" cy="30" r="4" fill="currentColor"/>
+  </symbol>
+  
+  <!-- Systems Icon -->
+  <symbol id="icon-systems" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="32" cy="32" r="14" fill="none" stroke="currentColor" stroke-width="1"/>
+    <circle cx="32" cy="32" r="8" fill="rgba(139, 92, 246, 0.3)"/>
+    <path d="M32 12 L32 22 M32 42 L32 52 M12 32 L22 32 M42 32 L52 32" stroke="currentColor" stroke-width="2"/>
+    <circle cx="32" cy="12" r="3" fill="currentColor"/>
+    <circle cx="32" cy="52" r="3" fill="currentColor"/>
+    <circle cx="12" cy="32" r="3" fill="currentColor"/>
+    <circle cx="52" cy="32" r="3" fill="currentColor"/>
+  </symbol>
+  
+  <!-- Scoring Icon -->
+  <symbol id="icon-scoring" viewBox="0 0 64 64">
+    <polygon points="32,8 38,26 58,28 42,40 48,58 32,48 16,58 22,40 6,28 26,26" fill="currentColor"/>
+    <polygon points="32,14 36,26 48,28 38,36 42,48 32,42 22,48 26,36 16,28 28,26" fill="rgba(0, 240, 255, 0.5)"/>
+    <circle cx="32" cy="30" r="6" fill="rgba(255, 255, 255, 0.3)"/>
+  </symbol>
+  
+  <!-- Physics Engine Icon -->
+  <symbol id="icon-physics" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="20" cy="32" r="6" fill="currentColor"/>
+    <circle cx="44" cy="32" r="6" fill="rgba(0, 240, 255, 0.5)"/>
+    <path d="M26 32 L38 32" stroke="currentColor" stroke-width="3"/>
+    <path d="M32 20 L32 44" stroke="rgba(255, 0, 110, 0.5)" stroke-width="2"/>
+  </symbol>
+  
+  <!-- Real-time Icon -->
+  <symbol id="icon-realtime" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M32 10 L32 32 L50 42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="4" fill="currentColor"/>
+    <path d="M20 14 L24 18 M44 14 L40 18 M50 44 L46 40" stroke="rgba(0, 240, 255, 0.5)" stroke-width="2"/>
+  </symbol>
+  
+  <!-- Particle Effects Icon -->
+  <symbol id="icon-particles" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="8" fill="currentColor"/>
+    <circle cx="18" cy="20" r="3" fill="rgba(0, 240, 255, 0.6)" opacity="0.8"/>
+    <circle cx="46" cy="18" r="2" fill="rgba(255, 0, 110, 0.6)" opacity="0.7"/>
+    <circle cx="50" cy="38" r="4" fill="rgba(139, 92, 246, 0.6)" opacity="0.9"/>
+    <circle cx="14" cy="44" r="2.5" fill="rgba(0, 240, 255, 0.6)" opacity="0.6"/>
+    <circle cx="40" cy="50" r="3.5" fill="rgba(255, 0, 110, 0.6)" opacity="0.8"/>
+    <path d="M32 24 L32 8" stroke="rgba(0, 240, 255, 0.4)" stroke-width="2" opacity="0.5"/>
+    <path d="M38 28 L52 20" stroke="rgba(255, 0, 110, 0.4)" stroke-width="2" opacity="0.5"/>
+    <path d="M38 38 L50 48" stroke="rgba(139, 92, 246, 0.4)" stroke-width="2" opacity="0.5"/>
+  </symbol>
+  
+  <!-- Keyboard Icon -->
+  <symbol id="icon-keyboard" viewBox="0 0 64 64">
+    <rect x="6" y="20" width="52" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="12" y="26" width="8" height="6" rx="1" fill="currentColor"/>
+    <rect x="24" y="26" width="8" height="6" rx="1" fill="currentColor"/>
+    <rect x="36" y="26" width="8" height="6" rx="1" fill="currentColor"/>
+    <rect x="18" y="36" width="28" height="6" rx="1" fill="rgba(0, 240, 255, 0.5)"/>
+  </symbol>
+  
+  <!-- Mouse Icon -->
+  <symbol id="icon-mouse" viewBox="0 0 64 64">
+    <rect x="22" y="12" width="20" height="36" rx="10" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="30" y="18" width="4" height="10" rx="2" fill="currentColor"/>
+    <circle cx="32" cy="40" r="3" fill="rgba(0, 240, 255, 0.5)"/>
+  </symbol>
+  
+  <!-- Touch Icon -->
+  <symbol id="icon-touch" viewBox="0 0 64 64">
+    <path d="M30 12 L30 32 L20 40 L14 36 L24 28 L24 12 Z" fill="currentColor"/>
+    <circle cx="27" cy="8" r="4" fill="currentColor"/>
+    <path d="M36 24 L36 42 L44 50 L50 46 L42 38 L42 24 Z" fill="rgba(0, 240, 255, 0.5)"/>
+    <circle cx="39" cy="20" r="3" fill="rgba(0, 240, 255, 0.5)"/>
+  </symbol>
+  
+  <!-- Shield Icon -->
+  <symbol id="icon-shield" viewBox="0 0 64 64">
+    <path d="M32 8 L48 14 L48 32 Q48 48 32 56 Q16 48 16 32 L16 14 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M32 12 L44 16 L44 32 Q44 44 32 50 Q20 44 20 32 L20 16 Z" fill="rgba(0, 240, 255, 0.2)"/>
+    <path d="M28 30 L31 34 L38 24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  
+  <!-- Rocket Icon -->
+  <symbol id="icon-rocket" viewBox="0 0 64 64">
+    <path d="M32 6 L38 18 L42 30 L38 42 L32 58 L26 42 L22 30 L26 18 Z" fill="currentColor"/>
+    <ellipse cx="32" cy="28" rx="6" ry="10" fill="rgba(0, 240, 255, 0.4)"/>
+    <circle cx="32" cy="24" r="4" fill="rgba(255, 255, 255, 0.6)"/>
+    <path d="M28 44 L24 54 L20 48 Z" fill="rgba(255, 0, 110, 0.6)"/>
+    <path d="M36 44 L40 54 L44 48 Z" fill="rgba(255, 0, 110, 0.6)"/>
+  </symbol>
+  
+  <!-- Trophy Icon -->
+  <symbol id="icon-trophy" viewBox="0 0 64 64">
+    <path d="M20 12 L44 12 L44 24 Q44 34 32 34 Q20 34 20 24 Z" fill="currentColor"/>
+    <rect x="28" y="34" width="8" height="12" fill="currentColor"/>
+    <rect x="22" y="46" width="20" height="4" rx="2" fill="currentColor"/>
+    <path d="M14 12 L20 12 L20 20 Q14 20 14 16 Z" fill="rgba(0, 240, 255, 0.5)"/>
+    <path d="M50 12 L44 12 L44 20 Q50 20 50 16 Z" fill="rgba(0, 240, 255, 0.5)"/>
+    <circle cx="32" cy="22" r="6" fill="rgba(255, 255, 255, 0.4)"/>
+  </symbol>
+  
+  <!-- Lightning Icon -->
+  <symbol id="icon-lightning" viewBox="0 0 64 64">
+    <path d="M38 6 L18 32 L28 32 L22 58 L46 28 L34 28 Z" fill="currentColor"/>
+    <path d="M36 8 L22 30 L28 30 L24 50 L42 30 L34 30 Z" fill="rgba(255, 255, 0, 0.4)"/>
+  </symbol>
+  
+  <!-- Star Icon -->
+  <symbol id="icon-star" viewBox="0 0 64 64">
+    <polygon points="32,8 38,26 58,28 42,40 48,58 32,48 16,58 22,40 6,28 26,26" fill="currentColor"/>
+    <polygon points="32,14 36,26 48,28 38,36 42,48 32,42 22,48 26,36 16,28 28,26" fill="rgba(255, 255, 255, 0.4)"/>
+  </symbol>
+  
+  <!-- Menu Icon -->
+  <symbol id="icon-menu" viewBox="0 0 64 64">
+    <rect x="12" y="18" width="40" height="4" rx="2" fill="currentColor"/>
+    <rect x="12" y="30" width="40" height="4" rx="2" fill="currentColor"/>
+    <rect x="12" y="42" width="40" height="4" rx="2" fill="currentColor"/>
+  </symbol>
+  
+  <!-- Close Icon -->
+  <symbol id="icon-close" viewBox="0 0 64 64">
+    <path d="M16 16 L48 48 M48 16 L16 48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  
+  <!-- Arrow Right Icon -->
+  <symbol id="icon-arrow-right" viewBox="0 0 64 64">
+    <path d="M16 32 L48 32 M36 20 L48 32 L36 44" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  
+  <!-- Arrow Left Icon -->
+  <symbol id="icon-arrow-left" viewBox="0 0 64 64">
+    <path d="M48 32 L16 32 M28 20 L16 32 L28 44" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  
+  <!-- Check Icon -->
+  <symbol id="icon-check" viewBox="0 0 64 64">
+    <path d="M16 32 L28 44 L52 16" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  
+  <!-- Warning Icon -->
+  <symbol id="icon-warning" viewBox="0 0 64 64">
+    <polygon points="32,8 58,54 6,54" fill="none" stroke="currentColor" stroke-width="3"/>
+    <rect x="30" y="22" width="4" height="16" rx="2" fill="currentColor"/>
+    <circle cx="32" cy="44" r="3" fill="currentColor"/>
+  </symbol>
+  
+  <!-- Info Icon -->
+  <symbol id="icon-info" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="3"/>
+    <circle cx="32" cy="20" r="3" fill="currentColor"/>
+    <rect x="30" y="28" width="4" height="20" rx="2" fill="currentColor"/>
+  </symbol>
+  
+  <!-- Settings Icon -->
+  <symbol id="icon-settings" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M32 6 L32 16 M32 48 L32 58 M6 32 L16 32 M48 32 L58 32 M14 14 L21 21 M43 43 L50 50 M50 14 L43 21 M21 43 L14 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+  
+  <!-- User Icon -->
+  <symbol id="icon-user" viewBox="0 0 64 64">
+    <circle cx="32" cy="22" r="12" fill="currentColor"/>
+    <path d="M14 54 Q14 38 32 38 Q50 38 50 54" fill="currentColor"/>
+  </symbol>
+  
+  <!-- Home Icon -->
+  <symbol id="icon-home" viewBox="0 0 64 64">
+    <path d="M10 32 L32 10 L54 32 L54 54 L38 54 L38 38 L26 38 L26 54 L10 54 Z" fill="currentColor"/>
+    <rect x="30" y="42" width="4" height="12" fill="rgba(0, 240, 255, 0.4)"/>
+  </symbol>
+  
+</svg>

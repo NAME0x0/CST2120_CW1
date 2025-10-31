@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Space Lanes</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="page-auth">
+  <canvas id="particle-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav-header" role="banner">
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Space Lanes Home">SPACE LANES</a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+        <li role="none"><a href="game.html" class="nav-link" role="menuitem">Game</a></li>
+        <li role="none"><a href="rankings.html" class="nav-link" role="menuitem">Rankings</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="auth-main" role="main">
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h1 class="glitch" data-text="REGISTER">REGISTER</h1>
+          <p>Create your pilot account</p>
+        </div>
+
+        <form id="registerForm" class="auth-form" novalidate>
+                    <div class="form-group">
+            <label for="username">Username *</label>
+            <input 
+              type="text" 
+              id="username" 
+              class="form-input" 
+              autocomplete="username"
+              required
+            >
+            <div class="form-error" id="usernameError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              required
+              placeholder="your.email@example.com"
+            >
+            <div class="form-error" id="emailError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              required
+              placeholder="Min 6 chars, 1 uppercase, 1 number"
+            >
+            <div class="form-error" id="passwordError"></div>
+            <div class="form-success" id="passwordSuccess"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password *</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="form-input"
+              required
+              placeholder="Re-enter password"
+            >
+            <div class="form-error" id="confirmPasswordError"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="form-input"
+                placeholder="First name"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                class="form-input"
+                placeholder="Last name"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-input"
+              placeholder="+1234567890"
+            >
+            <div class="form-error" id="phoneError"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea
+              id="address"
+              name="address"
+              class="form-input"
+              rows="2"
+              placeholder="Your address (optional)"
+            ></textarea>
+          </div>
+
+          <div class="form-error" id="formError" role="alert"></div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              <span>Create Account</span>
+            </button>
+            <a href="index.html" class="btn btn-ghost">Back to Home</a>
+          </div>
+        </form>
+
+        <div class="form-footer">
+          <p>Already registered? <a href="login.html" class="text-glow-cyan">Login here</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">SPACE LANES</div>
+          <p class="footer-text">Navigate the cosmos. Master the lanes. Conquer the void.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="game.html">Game</a></li>
+            <li><a href="rankings.html">Rankings</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Pilot Access</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html" aria-current="page">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>System Info</h4>
+          <div class="system-stats">
+            <div class="data-stream">VERSION: 1.0.0</div>
+            <div class="data-stream">ENGINE: CUSTOM 3D</div>
+            <div class="data-stream">STATUS: OPERATIONAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Space Lanes. CST2120 Coursework Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

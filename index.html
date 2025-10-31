@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Lanes - Navigate the Cosmos</title>
+  <meta name="description" content="Experience the future of space navigation in Space Lanes - a cyberpunk 3D game">
+  <meta name="keywords" content="game, cyberpunk, space, 3d, navigation, futuristic">
+  <meta name="theme-color" content="#0d0d1a">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner" id="loadingSpinner" aria-label="Loading Space Lanes"></div>
+    <div class="loading-logo glitch" data-text="SPACE LANES">SPACE LANES</div>
+    <div class="loading-progress">
+      <div class="loading-percentage" id="loadingPercentage">0%</div>
+      <div class="loading-bar-container">
+        <div class="loading-bar" id="loadingBar"></div>
+      </div>
+    </div>
+    <div class="loading-tip" id="loadingTip">Use WASD or Arrow keys to navigate through space lanes</div>
+    <div class="boot-sequence">
+      <div class="boot-line">INITIALIZING NEURAL LINK...</div>
+      <div class="boot-line">CALIBRATING THRUSTERS... OK</div>
+      <div class="boot-line">SYNCING NAVIGATION SYSTEMS... OK</div>
+      <div class="boot-line">LOADING ASTRAL DATABASE... OK</div>
+      <div class="boot-line">ESTABLISHING QUANTUM LINK... OK</div>
+      <div class="boot-line">SYSTEM READY</div>
+    </div>
+  </div>
+
+  <canvas id="particle-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Primary Navigation -->
+  <header class="nav-header" role="banner">
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Space Lanes Home">SPACE LANES</a>
+      <ul class="nav-links" role="menubar">
+        <li role="none">
+          <a href="index.html" class="nav-link active" role="menuitem" aria-current="page">
+            <svg width="18" height="18" class="icon-inline"><use xlink:href="#icon-home"></use></svg>
+            <span>Home</span>
+          </a>
+        </li>
+        <li role="none">
+          <a href="game.html" class="nav-link" role="menuitem">
+            <svg width="18" height="18" class="icon-inline"><use xlink:href="#icon-rocket"></use></svg>
+            <span>Game</span>
+          </a>
+        </li>
+        <li role="none">
+          <a href="rankings.html" class="nav-link" role="menuitem">
+            <svg width="18" height="18" class="icon-inline"><use xlink:href="#icon-trophy"></use></svg>
+            <span>Rankings</span>
+          </a>
+        </li>
+      </ul>
+      <div class="auth-links">
+        <a href="login.html" class="btn btn-secondary btn-sm" aria-label="Login to your pilot account">
+          <svg width="16" height="16" class="icon-inline"><use xlink:href="#icon-user"></use></svg>
+          <span>Login</span>
+        </a>
+        <a href="register.html" class="btn btn-primary btn-sm" aria-label="Create new pilot profile">
+          <svg width="16" height="16" class="icon-inline"><use xlink:href="#icon-rocket"></use></svg>
+          <span>Register</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="main-content" role="main">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title fade-in">
+            <span class="glitch" data-text="NAVIGATE">NAVIGATE</span>
+            <span class="glitch" data-text="THE COSMOS">THE COSMOS</span>
+          </h1>
+          <p class="hero-subtitle fade-in fade-in-delay-2">
+            Pilot your spacecraft through dynamic asteroid fields, quantum anomalies, and cosmic challenges. Master the lanes. Conquer the void.
+          </p>
+          <div class="hero-stats fade-in fade-in-delay-3">
+            <div class="stat-item">
+              <div class="stat-value text-glow-cyan">&infin;</div>
+              <div class="stat-label">Infinite Challenges</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value text-glow-magenta">3</div>
+              <div class="stat-label">Dynamic Lanes</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value text-glow-purple">3D</div>
+              <div class="stat-label">Immersive Engine</div>
+            </div>
+          </div>
+          <div class="hero-cta fade-in fade-in-delay-4">
+            <a href="register.html" class="btn btn-primary btn-lg" aria-label="Create your pilot profile to start playing">
+              <svg width="20" height="20" class="icon-inline"><use xlink:href="#icon-rocket"></use></svg>
+              <span>CREATE PILOT PROFILE</span>
+            </a>
+            <a href="#mission-brief" class="btn btn-ghost btn-lg" aria-label="Learn about your mission objectives">
+              <svg width="20" height="20" class="icon-inline"><use xlink:href="#icon-info"></use></svg>
+              <span>MISSION BRIEFING</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="asteroid-container" id="asteroidContainer">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Brief Section -->
+    <section class="mission-section" id="mission-brief" aria-label="Mission briefing">
+      <div class="section-header">
+        <span class="section-tag">// MISSION BRIEFING</span>
+        <h2 class="section-title text-glow-cyan">UNDERSTAND YOUR MISSION</h2>
+      </div>
+      <div class="carousel-container">
+        <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Previous mission card">
+          <svg width="24" height="24"><use xlink:href="#icon-chevron-left"></use></svg>
+        </button>
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Slide 1 -->
+            <div class="carousel-slide">
+              <div class="mission-card card">
+                <div class="hud-corner hud-corner-tl"></div>
+                <div class="hud-corner hud-corner-tr"></div>
+                <div class="hud-corner hud-corner-bl"></div>
+                <div class="hud-corner hud-corner-br"></div>
+                <div class="card-header">
+                  <svg width="48" height="48" class="mission-icon text-glow-cyan"><use xlink:href="#icon-navigation"></use></svg>
+                  <div>
+                    <div class="card-title">01 // NAVIGATION</div>
+                    <div class="card-subtitle">Master the quantum lanes</div>
+                  </div>
+                </div>
+                <p>Pilot through three dynamic space lanes, each with unique gravitational properties.</p>
+                <div class="lanes-demo">
+                  <div class="progression-grid">
+                    <div class="prog-item">
+                      <div class="prog-icon">Ⅰ</div>
+                      <div class="prog-label">SAFE VECTOR</div>
+                    </div>
+                    <div class="prog-item">
+                      <div class="prog-icon">Ⅱ</div>
+                      <div class="prog-label">SHIFT WINDOW</div>
+                    </div>
+                    <div class="prog-item">
+                      <div class="prog-icon">Ⅲ</div>
+                      <div class="prog-label">HYPERLANE</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <div class="mission-card card">
+            <div class="hud-corner hud-corner-tl"></div>
+            <div class="hud-corner hud-corner-tr"></div>
+            <div class="hud-corner hud-corner-bl"></div>
+            <div class="hud-corner hud-corner-br"></div>
+            <div class="card-header">
+              <svg width="48" height="48" class="mission-icon text-glow-magenta"><use xlink:href="#icon-obstacles"></use></svg>
+              <div>
+                <div class="card-title">02 // OBSTACLES</div>
+                <div class="card-subtitle">Anticipate cosmic hazards</div>
+              </div>
+            </div>
+            <p>Asteroid shards, debris clouds, and plasma storms force rapid decision making as you dodge through the lanes.</p>
+            <ul class="hazard-list">
+              <li><span class="text-glow-cyan">◆</span> Fragmented asteroids with unpredictable drift</li>
+              <li><span class="text-glow-magenta">◆</span> EMP shockwaves that disable navigation briefly</li>
+              <li><span class="text-glow-purple">◆</span> Rogue drones that mirror your movement</li>
+            </ul>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <div class="mission-card card">
+            <div class="hud-corner hud-corner-tl"></div>
+            <div class="hud-corner hud-corner-tr"></div>
+            <div class="hud-corner hud-corner-bl"></div>
+            <div class="hud-corner hud-corner-br"></div>
+            <div class="card-header">
+              <svg width="48" height="48" class="mission-icon text-glow-purple"><use xlink:href="#icon-systems"></use></svg>
+              <div>
+                <div class="card-title">03 // SYSTEMS</div>
+                <div class="card-subtitle">Upgrade your ship mid-run</div>
+              </div>
+            </div>
+            <p>Collect quantum cores to power temporary boosts and shields. Chain pickups to extend your multiplier.</p>
+            <ul class="tech-list">
+              <li>Adaptive thrusters for instant lane shifts</li>
+              <li>Graviton shield absorbs one collision</li>
+              <li>Phase drive enables hazard pass-through</li>
+            </ul>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <div class="mission-card card">
+            <div class="hud-corner hud-corner-tl"></div>
+            <div class="hud-corner hud-corner-tr"></div>
+            <div class="hud-corner hud-corner-bl"></div>
+            <div class="hud-corner hud-corner-br"></div>
+            <div class="card-header">
+              <svg width="48" height="48" class="mission-icon text-glow-cyan"><use xlink:href="#icon-scoring"></use></svg>
+              <div>
+                <div class="card-title">04 // SCORING</div>
+                <div class="card-subtitle">Climb the galactic rankings</div>
+              </div>
+            </div>
+            <p>Every near-miss and lane switch increases your score multiplier. Survive longer to dominate the leaderboard.</p>
+            <ul class="hazard-list">
+              <li><span class="text-glow-cyan">+</span> Maintain perfect streaks to boost combo tiers</li>
+              <li><span class="text-glow-magenta">+</span> Complete missions to unlock seasonal rewards</li>
+              <li><span class="text-glow-purple">+</span> Submit scores to the Space Lanes Archive</li>
+            </ul>
+              </div>
+            </div>
+          </div>
+        <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Next mission card">
+          <svg width="24" height="24"><use xlink:href="#icon-chevron-right"></use></svg>
+        </button>
+      </div>
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">// SPACECRAFT SYSTEMS</span>
+          <h2 class="section-title text-glow-magenta">ADVANCED FEATURES</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card card hologram">
+            <div class="feature-icon text-glow-cyan">
+              <svg width="64" height="64" class="icon-large">
+                <use xlink:href="#icon-navigation"></use>
+              </svg>
+            </div>
+            <h3>Quantum Navigation</h3>
+            <p>Switch between lanes instantly with quantum-leap technology.</p>
+          </div>
+          <div class="feature-card card hologram">
+            <div class="feature-icon text-glow-magenta">
+              <svg width="64" height="64" class="icon-large">
+                <use xlink:href="#icon-lightning"></use>
+              </svg>
+            </div>
+            <h3>Dynamic Difficulty</h3>
+            <p>AI-powered difficulty scaling adapts to your skill level.</p>
+          </div>
+          <div class="feature-card card hologram">
+            <div class="feature-icon text-glow-purple">
+              <svg width="64" height="64" class="icon-large">
+                <use xlink:href="#icon-star"></use>
+              </svg>
+            </div>
+            <h3>Combo System</h3>
+            <p>Chain perfect maneuvers to build massive score multipliers.</p>
+          </div>
+          <div class="feature-card card hologram">
+            <div class="feature-icon text-glow-cyan">
+              <svg width="64" height="64" class="icon-large">
+                <use xlink:href="#icon-trophy"></use>
+              </svg>
+            </div>
+            <h3>Global Rankings</h3>
+            <p>Compete against pilots across the universe.</p>
+          </div>
+          <div class="feature-card card hologram">
+            <div class="feature-icon text-glow-magenta">
+              <svg width="64" height="64" class="icon-large">
+                <use xlink:href="#icon-particles"></use>
+              </svg>
+            </div>
+            <h3>Cyberpunk Aesthetics</h3>
+            <p>Immerse yourself in a neon-soaked, futuristic visual experience.</p>
+          </div>
+          <div class="feature-card card hologram">
+            <div class="feature-icon text-glow-purple">
+              <svg width="64" height="64" class="icon-large">
+                <use xlink:href="#icon-user"></use>
+              </svg>
+            </div>
+            <h3>Profile System</h3>
+            <p>Create your pilot profile and save your progress.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section final-cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title glitch" data-text="READY FOR LAUNCH?">READY FOR LAUNCH?</h2>
+          <p class="cta-subtitle">Join thousands of pilots navigating the void. Your journey begins now.</p>
+          <div class="cta-buttons">
+            <a href="register.html" class="btn btn-primary btn-lg" aria-label="Create your pilot profile">
+              <svg width="20" height="20" class="icon-inline"><use xlink:href="#icon-rocket"></use></svg>
+              <span>CREATE PILOT PROFILE</span>
+            </a>
+            <a href="login.html" class="btn btn-ghost btn-lg" aria-label="Login to continue your journey">
+              <svg width="20" height="20" class="icon-inline"><use xlink:href="#icon-user"></use></svg>
+              <span>LOGIN TO CONTINUE</span>
+            </a>
+          </div>
+          <div class="cta-stats">
+            <div class="data-stream">SYSTEMS: ONLINE // ENGINES: READY // COORDINATES: LOCKED</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">SPACE LANES</div>
+          <p class="footer-text">Navigate the cosmos. Master the lanes. Conquer the void.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="game.html">Game</a></li>
+            <li><a href="rankings.html">Rankings</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Pilot Access</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>System Info</h4>
+          <div class="system-stats">
+            <div class="data-stream">VERSION: 1.0.0</div>
+            <div class="data-stream">ENGINE: CUSTOM 3D</div>
+            <div class="data-stream">STATUS: OPERATIONAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Space Lanes. CST2120 Coursework Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

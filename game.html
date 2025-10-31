@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Lanes - Game</title>
+  <meta name="description" content="Pilot through three dynamic space lanes, dodge hazards, and chase a new high score.">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="page-game">
+  <video autoplay muted loop id="bg-video">
+    <source src="assets/videos/space.mp4" type="video/mp4">
+  </video>
+  <canvas id="particle-canvas" class="particles-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav-header" role="banner">
+    <nav class="nav-container" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="Space Lanes Home">SPACE LANES</a>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+        <li role="none"><a href="game.html" class="nav-link" role="menuitem" aria-current="page">Game</a></li>
+        <li role="none"><a href="rankings.html" class="nav-link" role="menuitem">Rankings</a></li>
+      </ul>
+      <div class="auth-links">
+        <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="game-main" role="main">
+    <div class="container">
+      <div class="game-layout">
+        <section class="game-panel game-panel--canvas" aria-label="Space Lanes runner">
+          <canvas id="gameCanvas" width="960" height="540" role="img" aria-label="Spacecraft navigating three glowing lanes"></canvas>
+          <div class="game-overlay" id="gameOverlay" hidden>
+            <div class="overlay-content">
+              <h2 id="overlayTitle">Run Complete</h2>
+              <p id="overlayMessage">Submit your score to the leaderboard.</p>
+              <div class="overlay-actions">
+                <button class="btn btn-primary" id="startGameButton">Start New Run</button>
+                <button class="btn btn-primary" id="resumeGameButton" style="display: none;">Resume Run</button>
+                <button class="btn btn-secondary" id="returnHomeButton">Return Home</button>
+              </div>
+            </div>
+          </div>
+                    <div class="game-hud" aria-live="polite">
+                      <div class="hud-left">
+                        <div class="hud-metric">
+                          <span class="hud-label">Score</span>
+                          <span class="hud-value" id="scoreValue">0</span>
+                        </div>
+                        <div class="hud-metric">
+                          <span class="hud-label">Time</span>
+                          <span class="hud-value" id="timeValue">0.0s</span>
+                        </div>
+                        <div class="hud-metric">
+                          <span class="hud-label">Kills</span>
+                          <span class="hud-value" id="killsValue">0</span>
+                        </div>
+                        <div class="hud-metric">
+                          <span class="hud-label">Level</span>
+                          <span class="hud-value" id="levelValue">1</span>
+                        </div>
+                        <div class="hud-metric hud-metric-xp">
+                          <span class="hud-label">XP</span>
+                          <progress id="xpBar" value="0" max="100"></progress>
+                        </div>
+                      </div>
+                      <div class="hud-right">
+                                      <div class="hud-metric">
+                                        <span class="hud-label">Combos</span>
+                                        <span class="hud-value" id="comboValue">x1</span>
+                                      </div>
+                                      <div class="hud-metric">
+                                        <span class="hud-label">Combo Multiplier</span>
+                                        <span class="hud-value" id="comboMultiplierValue">x1.0</span>
+                                      </div>                        <div class="hud-metric">
+                          <span class="hud-label">Multiplier</span>
+                          <span class="hud-value" id="multiplierValue">x1.0</span>
+                        </div>
+                        <div class="hud-metric">
+                          <span class="hud-label">Integrity</span>
+                          <span class="hud-value" id="integrityValue">100%</span>
+                        </div>
+                        <div class="hud-metric">
+                          <span class="hud-label">Weapon</span>
+                          <span class="hud-value" id="weaponValue">Default</span>
+                        </div>
+                      </div>
+                    </div>
+        </section>
+
+        <aside class="game-panel game-panel--info" aria-label="Mission briefing">
+          <h1 class="glitch" data-text="MISSION">MISSION</h1>
+          <p class="game-intro">Maintain velocity across the three quantized lanes, evade debris, and exploit narrow gaps to build unstoppable momentum. Every second survived raises your standing in the Space Lanes archive.</p>
+
+          <div class="game-checklist">
+            <h2>Flight Protocol</h2>
+            <ul>
+              <li><span>← →</span> Shift lanes instantly.</li>
+              <li><span>↑</span> Pulse through hazards once per charge.</li>
+              <li><span>SPACE/CLICK</span> Fire active weapon.</li>
+              <li><span>SHIFT</span> Activate temporary shield (invincible for 10s).</li>
+              <li>Near-misses escalate your combo multiplier.</li>
+              <li>Blackholes pull asteroids towards them. Avoid getting caught in their gravity well!</li>
+              <li>A collision depletes integrity. Zero integrity ends the run.</li>
+            </ul>
+          </div>
+
+          <div class="game-profile">
+            <h2>Pilot Status</h2>
+            <div class="profile-field">
+              <span class="label">Callsign</span>
+              <span class="value" id="pilotName">Guest</span>
+            </div>
+            <div class="profile-field">
+              <span class="label">Personal Best</span>
+              <span class="value" id="personalBest">0</span>
+            </div>
+            <div class="game-actions">
+              <button class="btn btn-secondary" id="pauseGameButton">Pause</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">SPACE LANES</div>
+          <p class="footer-text">Navigate the cosmos. Master the lanes. Conquer the void.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="game.html" aria-current="page">Game</a></li>
+            <li><a href="rankings.html">Rankings</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Pilot Access</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>System Info</h4>
+          <div class="system-stats">
+            <div class="data-stream">VERSION: 1.0.0</div>
+            <div class="data-stream">ENGINE: CUSTOM 3D</div>
+            <div class="data-stream">STATUS: OPERATIONAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Space Lanes. CST2120 Coursework Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>

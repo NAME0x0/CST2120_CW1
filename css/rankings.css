@@ -1,0 +1,153 @@
+.page-rankings {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-space-deep);
+}
+
+.page-rankings .main-content {
+  flex: 1;
+  padding: calc(var(--nav-height) + var(--space-3xl)) var(--container-padding) var(--space-4xl);
+}
+
+.page-rankings .rankings-container {
+  position: relative;
+  z-index: var(--z-content);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.rankings-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.rankings-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: var(--space-md);
+  background: linear-gradient(135deg, var(--color-cyan-primary), var(--color-magenta-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rankings-header p {
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rankings-grid {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.leaderboard-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl) var(--space-2xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.leaderboard-section h2 {
+  color: var(--color-cyan-bright);
+  margin-bottom: var(--space-xl);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: var(--font-mono);
+}
+
+.rankings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rankings-table thead {
+  border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+}
+
+.rankings-table th {
+  padding: var(--space-lg) var(--space-md);
+  text-align: left;
+  color: var(--color-cyan-primary);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-family: var(--font-mono);
+}
+
+.rankings-table td {
+  padding: var(--space-lg) var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+}
+
+.rankings-table tr:hover {
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.rank-1 {
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: #000;
+}
+
+.rank-2 {
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  color: #000;
+}
+
+.rank-3 {
+  background: linear-gradient(135deg, #cd7f32, #8b4513);
+  color: #fff;
+}
+
+.rank-other {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-primary);
+}
+
+.score-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-cyan-bright);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-3xl);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .page-rankings .main-content {
+    padding: calc(var(--nav-height) + var(--space-2xl)) var(--space-lg) var(--space-3xl);
+  }
+
+  .rankings-table th,
+  .rankings-table td {
+    padding: var(--space-md);
+  }
+
+  .rankings-table {
+    font-size: 0.9rem;
+  }
+}
